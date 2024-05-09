@@ -15,6 +15,9 @@ using RobloxWithPinoo_UI.Services.UserService;
 using RobloxWithPinoo_UI.Validators;
 using System.Globalization;
 
+
+// TEST COMMIT
+
 var builder = WebApplication.CreateBuilder(args);
 
 Account account = new Account(
