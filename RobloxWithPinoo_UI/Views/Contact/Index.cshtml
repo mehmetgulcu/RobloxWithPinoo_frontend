@@ -1,0 +1,95 @@
+﻿﻿@{
+    Layout = "~/Views/Shared/_PageLayout.cshtml";
+}
+
+@model RobloxWithPinoo_UI.Entity.Dtos.ContactFormDtos.SubmitContactFormDto
+
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center">
+                    <p class="text-primary text-uppercase fw-bold mb-3">Bizimle İletişime Geçin</p>
+                    <h1>hadi bağlanalım</h1>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="shadow rounded p-5 bg-white">
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <h4>Bir mesaj bırakın</h4>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-form">
+                                <form asp-area="" asp-controller="Contact" asp-action="Index" method="post">
+                                    <div class="row">
+                                        <div class="form-group mb-4 pb-2 col-md-6">
+                                            <label for="contact_name" class="form-label">İsim</label>
+                                            <input type="text" asp-for="Name" class="form-control shadow-none" id="contact_firstname" placeholder="Adınız">
+                                            <span asp-validation-for="Name" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group mb-4 pb-2 col-md-6">
+                                            <label for="contact_lastname" class="form-label">Soyisim</label>
+                                            <input type="text" asp-for="Surname" class="form-control shadow-none" id="contact_lastname" placeholder="Soyadınız">
+                                            <span asp-validation-for="Surname" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-4 pb-2">
+                                        <label for="contact_email" class="form-label">Email Adresi</label>
+                                        <input type="email" asp-for="Email" class="form-control shadow-none" id="contact_email" placeholder="example@example.com">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group mb-4 pb-2">
+                                        <label for="contact_message" class="form-label">Mesajınız</label>
+                                        <textarea asp-for="Message" class="form-control shadow-none" id="contact_message" rows="5" placeholder="Mesajınızı buraya yazınız..."></textarea>
+                                        <span asp-validation-for="Message" class="text-danger"></span>
+                                    </div>
+                                    <button class="btn btn-primary w-100" type="submit">Gönder</button>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mt-5 mt-lg-0">
+                            <div class="contact-info">
+                                <div class="block mt-0">
+                                    <h4 class="h5">Hala sorunuz mu var ?</h4>
+                                    <div class="content">
+                                        Bizi Arayın Yardımcı Olmaktan Mutluluk Duyarız
+                                        <br> <a href="tel:+905511660444">+90 551 166 04 44</a>
+                                        <br>Pazartesi - Pazar
+                                        <br>09.00 - 18.00
+                                    </div>
+                                </div>
+                                <div class="block mt-4">
+                                    <h4 class="h5">Genel Merkez</h4>
+                                    <div class="content">
+                                        Atatürk Mah Girne Cad
+                                        <br>No:11/1 Ataşehir
+                                        <br>İstanbul
+                                    </div>
+                                </div>
+                                <div class="block">
+                                    <ul class="list-unstyled list-inline my-4 social-icons">
+                                        <li class="list-inline-item me-3">
+                                            <a title="Explorer Facebook Profile" class="text-black" href="https://www.facebook.com/pinooroboticss"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li class="list-inline-item me-3">
+                                            <a title="Explorer Twitter Profile" class="text-black" href="https://twitter.com/RoboticsPinoo"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li class="list-inline-item me-3">
+                                            <a title="Explorer Instagram Profile" class="text-black" href="https://www.instagram.com/pinoorobotics/"><i class="fab fa-instagram"></i></a>
+                                        </li>
+                                        <li class="list-inline-item me-3">
+                                            <a title="Explorer Youtube Profile" class="text-black" href="https://www.youtube.com/c/pinoorobotics"><i class="fab fa-youtube"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

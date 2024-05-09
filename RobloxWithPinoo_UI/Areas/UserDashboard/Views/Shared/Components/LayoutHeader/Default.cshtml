@@ -1,0 +1,18 @@
+﻿@model RobloxWithPinoo_UI.Entity.Dtos.AccountDtos.AccountInfoDto
+
+<div class="nav-right col-xxl-8 col-xl-6 col-md-7 col-8 pull-right right-header p-0 ms-auto">
+    <ul class="nav-menus">
+        <li class="profile-nav onhover-dropdown px-0 py-0" style="display: block !important;">
+            <div class="d-flex profile-media align-items-center">
+                <img width="30" height="30" src="https://img.icons8.com/ios/30/name--v1.png" alt="name--v1" />
+                <div class="flex-grow-1">
+                    <span>@Model.FirstName @Model.LastName</span>
+                </div>
+            </div>
+            <ul class="profile-dropdown onhover-show-div">
+                <li><a href="private-chat.html"><i data-feather="user"></i><span>Hesabım</span></a></li>
+                <li><a asp-area="UserDashboard" asp-controller="Auth" asp-action="Logout"><i data-feather="log-in"> </i><span>Çıkış Yap</span></a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

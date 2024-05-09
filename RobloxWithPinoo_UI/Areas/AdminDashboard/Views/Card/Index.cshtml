@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<RobloxWithPinoo_UI.Entity.Dtos.CardDtos.CardListForAdminDto>
+
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <h4>Kartlarım</h4>
+        </div>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive theme-scrollbar">
+                    <table class="display" id="basic-1">
+                        <thead>
+                            <tr>
+                                <th>Kullanıcı Adı</th>
+                                <th>Kullanıcı Mail</th>
+                                <th>Kullanıcı Kayıt Tarihi</th>
+                                <th>Kart Numarası</th>
+                                <th>Kart Adı</th>
+                                <th>Son Kart Kullanma Tarihi</th>
+                                <th>Oluşturulma Tarihi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.FirstLastName</td>
+                                    <td>@item.Mail</td>
+                                    <td>@item.UserRegisterdDate</td>
+                                    <td>@item.Id</td>
+                                    <td>@item.CardName</td>
+                                    <td>@item.ModifiedDate</td>
+                                    <td>@item.CreatedDate</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+﻿@{
+    Layout = null;
+}
+
+@model RobloxWithPinoo_UI.Entity.Dtos.AuthDtos.RegisterDto
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mofi admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Mofi admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <link rel="icon" href="~/Admin/theme/assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/Admin/theme/assets/images/favicon.png" type="image/x-icon">
+    <title>Mofi - Premium Admin Template</title>
+    <!-- Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/font-awesome.css">
+
+    <script src="~/Admin/theme/"></script>
+
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/vendors/icofont.css">
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/vendors/themify.css">
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/vendors/flag-icon.css">
+    <!-- Feather icon-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/vendors/feather-icon.css">
+    <!-- Plugins css start-->
+    <!-- Plugins css Ends-->
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/vendors/bootstrap.css">
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/style.css">
+    <link id="color" rel="stylesheet" href="~/Admin/theme/assets/css/color-1.css" media="screen">
+    <!-- Responsive css-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/responsive.css">
+</head>
+<body>
+    <!-- login page start-->
+    <div class="container-fluid p-0">
+        <div class="row m-0">
+            <div class="col-xl-5"><img class="bg-img-cover bg-center" src="~/Admin/theme/assets/images/login/3.jpg" alt="looginpage"></div>
+            <div class="col-xl-7 p-0">
+                <div class="login-card login-dark">
+                    <div>
+                        <div><a class="logo text-start" asp-area="" asp-controller="Home" asp-action="Index"><img class="img-fluid for-light" src="~/Landing/theme/images/PinooLogo.png" alt="looginpage"><img class="img-fluid for-dark" src="~/Landing/theme/images/PinooLogo.png" alt="looginpage"></a></div>
+                        <div class="login-main">
+                            <form class="theme-form" asp-area="" asp-controller="Auth" asp-action="Register" method="post">
+                                <h4>hesabını oluştur</h4>
+                                <p>Hesap oluşturmak için kişisel bilgilerinizi girin</p>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0">Ad Soyad</label>
+                                    <div class="row g-2">
+                                        <div class="col-6">
+                                            <input class="form-control" type="text"  placeholder="Ad" asp-for="FirstName">
+                                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-6">
+                                            <input class="form-control" type="text"  placeholder="Soyad" asp-for="LastName">
+                                            <span asp-validation-for="LastName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Eposta Adresi</label>
+                                    <input class="form-control" type="email"  placeholder="Test@gmail.com" asp-for="Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Password</label>
+                                    <div class="form-input position-relative">
+                                        <input class="form-control" type="password"  placeholder="*********" asp-for="Password">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="checkbox p-0">
+                                        <input id="checkbox1" type="checkbox">
+                                        <label class="text-muted" for="checkbox1">Kabul Et<a class="ms-2" asp-area="" asp-controller="Home" asp-action="PrivacyPolicy">Gizlilik Politikası</a></label>
+                                    </div>
+                                    <button class="btn btn-primary btn-block w-100" type="submit">Hesap Oluştur</button>
+                                </div>
+                                <p class="mt-4 mb-0 text-center">Zaten hesabınız var mı?<a class="ms-2" asp-area="" asp-controller="Auth" asp-action="Login">Giriş Yap</a></p>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- latest jquery-->
+        <script src="~/Admin/theme/assets/js/jquery.min.js"></script>
+        <!-- Bootstrap js-->
+        <script src="~/Admin/theme/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+        <!-- feather icon js-->
+        <script src="~/Admin/theme/assets/js/icons/feather-icon/feather.min.js"></script>
+        <script src="~/Admin/theme/assets/js/icons/feather-icon/feather-icon.js"></script>
+        <!-- scrollbar js-->
+        <!-- Sidebar jquery-->
+        <script src="~/Admin/theme/assets/js/config.js"></script>
+        <!-- Plugins JS start-->
+        <!-- calendar js-->
+        <!-- Plugins JS Ends-->
+        <!-- Theme js-->
+        <script src="~/Admin/theme/assets/js/script.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await Component.InvokeAsync("Notyf")
+    </div>
+</body>
+</html>

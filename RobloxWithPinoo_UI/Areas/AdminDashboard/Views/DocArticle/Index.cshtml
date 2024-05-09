@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<RobloxWithPinoo_UI.Entity.Dtos.DocArticleDtos.ListDocArticles>
+
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <h4>Tüm Eğitim Dokümanları</h4>
+        </div>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive theme-scrollbar">
+                    <table class="display" id="basic-1">
+                        <thead>
+                            <tr>
+                                <th data-column-id="konu">Kategori</th>
+                                <th data-column-id="kategori">Konu</th>
+                                <th data-column-id="tarih">Oluşturulma Tarihi</th>
+                                <th data-column-id="islem" data-sortable="false">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr data-item-id="@item.Id">
+                                    <td>@item.DocCategoryName</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.CreatedDate</td>
+                                    <td>
+                                        <ul class="action">
+                                            <li class="edit"><a data-id="@item.Id" asp-area="AdminDashboard" asp-controller="DocArticle" asp-action="UpdateDocArticle" asp-route-articleId="@item.Id"><i class="icon-pencil-alt"></i></a></li>
+                                            <li class="delete"><a data-id="@item.Id" asp-area="AdminDashboard" asp-controller="DocArticle" asp-action="DeleteDocArticle" asp-route-articleId="@item.Id"><i class="icon-trash"></i></a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

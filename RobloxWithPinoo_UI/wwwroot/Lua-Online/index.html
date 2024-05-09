@@ -1,0 +1,49 @@
+<html>
+<meta charset="utf-8">
+
+<head>
+    <!-- meta data -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lua Online</title>
+
+    <meta name="author" content="Andrew Li">
+    <meta name="description" content="Lua Online, Run Lua online now">
+    <meta name="keywords" content="lua coding online">
+    <meta property="og:image" content="img/ico.svg">
+
+    <!-- Mini icon on tab -->
+    <link rel="icon" href="img/ico.svg" type="image/ico">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <!-- code mirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.css" integrity="sha512-xIf9AdJauwKIVtrVRZ0i4nHP61Ogx9fSRAkCLecmE2dL/U8ioWpDvFCAy4dcfecN72HHB9+7FfQj3aiO68aaaw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.js" integrity="sha512-zuvaVNiXwWY7U7HEdXsoTislTEElpKLELFoyQw0Bg7zfGhC4vG8eAhCxIQAvHmprW7dFhTq5zshUko4K3B4mSA==" crossorigin="anonymous"></script>
+    <!-- lua theme -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/mode/lua/lua.min.js" integrity="sha512-y9AUtl0J5yAFGJx0mcdHPVsba97LmWZ+00K+w78g3cx9klrn/5joZCH/KegMwhSnliF17Z46A50X773374wA/w==" crossorigin="anonymous"></script>
+    <!-- theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/theme/cobalt.min.css" integrity="sha512-dAYwzcmdv0GvCo9UJmVP430Mc9kmvpdDVk/pHNG90qTZR6tpHQlR9BsVdK9ZGpnNtQNVl+j7UQppCwOPN0TTNQ==" crossorigin="anonymous" />
+
+    <!-- Initiates WebAssembly -->
+    <script src="webassem.js"></script>
+</head>
+
+<body>
+    <!-- main code -->
+    <div class="main">
+        <div id="input"></div>
+        <div id="result"><p id="output"></p></div>
+    </div>
+    
+    <!-- 3 buttons, 1 (+) add item, 1 (-) remove item, and 1 to enable help -->
+    <div class="buttons">
+        <ul>
+            <li id="first"><button id="build" type="button" title="Build" onclick="build()"><b>Çalıştır</b></button></li>
+            <li id="second"><a id="download_file" download="main.lua"><button id="download" type="button" title="Download" onclick="download()"><b>İndir</b></button></a></li>
+        </ul>
+    </div>
+    <!-- end of main code -->
+    <script src="code.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Areas/UserDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<RobloxWithPinoo_UI.Entity.Dtos.CardDtos.CardListDto>
+
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <h4>Kartlarım</h4>
+        </div>
+
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive theme-scrollbar">
+                    <table class="display" id="basic-1">
+                        <thead>
+                            <tr>
+                                <th data-column-id="kategori">Kart Adı</th>
+                                <th data-column-id="tarih">Son Kart Kullanma Tarihi</th>
+                                <th data-column-id="tarih">Oluşturulma Tarihi</th>
+                                <th data-column-id="islem" data-sortable="false">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr data-item-id="@item.Id">
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span>@item.CardName</span>
+                                            <span style="margin-left: 10px;"></span>
+                                            <button class="btn btn-sm btn-secondary" onclick="copyToClipboard('@item.CardName')">
+                                                <i class="icon-clipboard"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>@item.ModifiedDate</td>
+                                    <td>@item.CreatedDate</td>
+                                    <td>
+                                        <ul class="action">
+                                            <li class="delete"><a data-id="@item.Id" asp-area="UserDashboard" asp-controller="Card" asp-action="DeleteCard" asp-route-cardId="@item.Id"><i class="icon-trash"></i></a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyToClipboard(text) {
+        var input = document.createElement('input');
+        input.setAttribute('value', text);
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        alert("Kart adı kopyalandı: " + text);
+    }
+</script>

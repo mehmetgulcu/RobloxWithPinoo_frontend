@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Areas/UserDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model RobloxWithPinoo_UI.Entity.Dtos.CardDtos.CreateCardDto
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Kart Tanımla</h4>
+                </div>
+                <div class="card-body add-post">
+                    <form class="row needs-validation" asp-area="UserDashboard" asp-controller="Card" asp-action="CreateCard" method="post" enctype="multipart/form-data">
+                        <div class="col-sm-12">
+                            <div class="mb-3">
+                                <label for="validationCustom01">Kart Adı:</label>
+                                <input class="form-control" id="validationCustom01" asp-for="CardName" type="text" placeholder="Kartınıza İsim Verin" >
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-3">
+                                <label for="validationCustom01">Kart Aktivasyon Kodu:</label>
+                                <input class="form-control" id="validationCustom01" asp-for="ActivationCode" type="text" placeholder="Kartı aktif etmek için kodu giriniz." >
+                            </div>
+                        </div>
+                        <div class="btn-showcase text-end">
+                            <button class="btn btn-primary" type="submit">Kaydet</button>
+                            <input class="btn btn-light" type="reset" value="Vazgeç">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

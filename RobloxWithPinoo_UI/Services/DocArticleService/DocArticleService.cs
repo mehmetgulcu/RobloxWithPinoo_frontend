@@ -1,0 +1,301 @@
+﻿using Newtonsoft.Json;
+using RobloxWithPinoo_UI.Entity.Dtos.CardDtos;
+using RobloxWithPinoo_UI.Entity.Dtos.DocArticleDtos;
+using RobloxWithPinoo_UI.Entity.Dtos.DocCategoryDtos;
+using RobloxWithPinoo_UI.Entity.Messages;
+using System.Net.Http.Headers;
+using System.Text;
+
+namespace RobloxWithPinoo_UI.Services.DocArticleService
+{
+    public class DocArticleService : IDocArticleService
+    {
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public DocArticleService(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
+
+        public async Task<DocArticleDetails> ArticleDetails(Guid articleId, string token)
+        {
+            try
+            {
+                using var client = new HttpClient(new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+                });
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await client.GetAsync($"{Constants.BaseUrl.BackendBaseUrl}/api/DocArticle/get-article/{articleId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<DocArticleDetails>(content);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HTTP isteği sırasında bir hata oluştu: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bir hata oluştu: " + ex.Message);
+            }
+        }
+
+        public async Task<bool> CreateDocArticle(CreateDocArticle createDocArticle, string token)
+        {
+            try
+            {
+                using var client = new HttpClient(new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+                });
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var jsonContent = JsonConvert.SerializeObject(createDocArticle);
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync($"{Constants.BaseUrl.BackendBaseUrl}/api/DocArticle/create-doc-article", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseBody = await response.Content.ReadAsStringAsync();
+
+                    return true;
+                }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    return false;
+                }
+
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HTTP isteği sırasında bir hata oluştu: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bir hata oluştu: " + ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteDocArticleAsync(Guid articleId, string token)
+        {
+            try
+            {
+                using var client = new HttpClient(new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+                });
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await client.DeleteAsync($"{Constants.BaseUrl.BackendBaseUrl}/api/DocArticle/delete-doc-article/{articleId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseBody = await response.Content.ReadAsStringAsync();
+
+                    return true;
+                }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(errorContent);
+                    return false;
+                }
+
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HTTP isteği sırasında bir hata oluştu: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bir hata oluştu: " + ex.Message);
+            }
+        }
+
+        public async Task<IEnumerable<ListDocArticles>> GetAllListDocArticles(string token)
+        {
+            try
+            {
+                using var client = new HttpClient(new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+                });
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await client.GetAsync($"{Constants.BaseUrl.BackendBaseUrl}/api/DocArticle/get-all-doc-articles");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<IEnumerable<ListDocArticles>>(content);
+                }
+                else
+                {
+                    return Enumerable.Empty<ListDocArticles>();
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HTTP isteği sırasında bir hata oluştu: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bir hata oluştu: " + ex.Message);
+            }
+        }
+
+        public async Task<IEnumerable<DocArticles>> GetDocArticleByCategoryAsync(Guid categoryId, string token)
+        {
+            try
+            {
+                using var client = new HttpClient(new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+                });
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await client.GetAsync($"{Constants.BaseUrl.BackendBaseUrl}/api/DocArticle/get-articles-by-category/{categoryId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<IEnumerable<DocArticles>>(content);
+                }
+                else
+                {
+                    return Enumerable.Empty<DocArticles>();
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HTTP isteği sırasında bir hata oluştu: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bir hata oluştu: " + ex.Message);
+            }
+        }
+
+        public async Task<DocArticles> GetDocArticleByIdAsync(Guid articleId, string token)
+        {
+            try
+            {
+                using var client = new HttpClient(new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+                });
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await client.GetAsync($"{Constants.BaseUrl.BackendBaseUrl}/api/DocArticle/get-article/{articleId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<DocArticles>(content);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HTTP isteği sırasında bir hata oluştu: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bir hata oluştu: " + ex.Message);
+            }
+        }
+
+        public async Task<IEnumerable<ListDocArticles>> GetDocArticleListByCategoryAsync(Guid categoryId, string token)
+        {
+            try
+            {
+                using var client = new HttpClient(new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+                });
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await client.GetAsync($"{Constants.BaseUrl.BackendBaseUrl}/api/DocArticle/get-articles-by-category/{categoryId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<IEnumerable<ListDocArticles>>(content);
+                }
+                else
+                {
+                    return Enumerable.Empty<ListDocArticles>();
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HTTP isteği sırasında bir hata oluştu: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bir hata oluştu: " + ex.Message);
+            }
+        }
+
+        public async Task<bool> UpdateDocArticle(UpdateDocArticle updateDocArticle, Guid articleId, string token)
+        {
+            try
+            {
+                using var client = new HttpClient(new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+                });
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var jsonContent = JsonConvert.SerializeObject(updateDocArticle);
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync($"{Constants.BaseUrl.BackendBaseUrl}/api/update-doc-article/{articleId}", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseBody = await response.Content.ReadAsStringAsync();
+
+                    return true;
+                }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(errorContent);
+                    return false;
+                }
+
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HTTP isteği sırasında bir hata oluştu: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bir hata oluştu: " + ex.Message);
+            }
+        }
+    }
+}

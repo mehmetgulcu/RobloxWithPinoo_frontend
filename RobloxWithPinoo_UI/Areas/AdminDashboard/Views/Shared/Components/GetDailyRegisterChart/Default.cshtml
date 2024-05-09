@@ -1,0 +1,73 @@
+﻿@model RobloxWithPinoo_UI.Entity.Dtos.AdminDashboardDtos.DailyRegisterChart
+
+<style>
+    .chart-container {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="xl-50 col-xl-7 col-lg-12">
+    <div class="small-chart-widget chart-widgets-small">
+        <div class="card">
+            <div class="card-header">
+                <h4>@Model.RegisterDate - @Model.RegisterDayName Tarihli Kullanıcı Kayıt Grafiği</h4>
+            </div>
+            <div class="card-body">
+                @if (Model.Count == 0)
+                {
+                    <p>Bugün şu ana kadar kayıt olmadı.</p>
+                }
+                else
+                {
+                    <div class="chart-container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div>
+                                    <canvas id="dailyChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const xValues = ["@Model.RegisterDayName"];
+    const yValues = [@Model.Count];
+    const barColors = ["green"];
+
+    new Chart("dailyChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: '@Model.RegisterDate',
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: false },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 5
+                    }
+                }]
+            }
+        }
+    });
+</script>

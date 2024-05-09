@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Roblox With Pinoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="This is meta description">
+    <meta name="author" content="Themefisher">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="~/Landing/theme/images/favicon.png" type="image/x-icon">
+
+    <meta name="theme-name" content="wallet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Landing/theme/plugins/slick/slick.css">
+    <link rel="stylesheet" href="~/Landing/theme/plugins/font-awesome/fontawesome.min.css">
+    <link rel="stylesheet" href="~/Landing/theme/plugins/font-awesome/brands.css">
+    <link rel="stylesheet" href="~/Landing/theme/plugins/font-awesome/solid.css">
+
+    <link rel="stylesheet" href="~/Landing/theme/css/style.css">
+</head>
+
+<body>
+
+    @await Component.InvokeAsync("Navigation")
+
+    @await Component.InvokeAsync("PageHeader")
+
+    @RenderBody()
+
+    @await Component.InvokeAsync("Footer")
+
+    <script src="~/Landing/theme/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Landing/theme/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="~/Landing/theme/plugins/slick/slick.min.js"></script>
+    <script src="~/Landing/theme/plugins/scrollmenu/scrollmenu.min.js"></script>
+
+    <script src="~/Landing/theme/js/script.js"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    @await Component.InvokeAsync("Notyf")
+</body>
+</html>

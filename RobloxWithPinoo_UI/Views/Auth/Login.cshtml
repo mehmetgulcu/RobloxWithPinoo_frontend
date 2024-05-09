@@ -1,0 +1,83 @@
+﻿@{
+    Layout = null;
+}
+
+@model RobloxWithPinoo_UI.Entity.Dtos.AuthDtos.LoginDto
+
+<html lang="tr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="mehmetgulcu">
+
+    <link rel="icon" href="~/Admin/theme/assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/Admin/theme/assets/images/favicon.png" type="image/x-icon">
+
+    <title>Pinoo | Kullanıcı Girişi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/vendors/icofont.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/vendors/themify.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/vendors/flag-icon.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/vendors/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/style.css">
+    <link id="color" rel="stylesheet" href="~/Admin/theme/assets/css/color-1.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="~/Admin/theme/assets/css/responsive.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-5 b-center bg-size" style="background-image: url(&quot;~/Admin/theme/assets/images/assets/login-banner.png&quot;); background-size: cover; background-position: center center; display: block;"><img class="bg-img-cover bg-center" src="~/Admin/theme/assets/images/asset/login-banner.png" alt="looginpage" style="display: none;"></div>
+            <div class="col-xl-7 p-0">
+                <div class="login-card login-dark">
+                    <div>
+                        <div><a class="logo text-start" asp-area="" asp-controller="Home" asp-action="Index"><img class="img-fluid for-light" src="~/Landing/theme/images/PinooLogo.png" alt="looginpage"><img class="img-fluid for-dark" src="~/Landing/theme/images/PinooLogo.png" alt="looginpage"></a></div>
+                        <div class="login-main">
+                            <form asp-area="" asp-controller="Auth" asp-action="Login" method="post" class="theme-form">
+                                <h4>Hesapta oturum açın</h4>
+                                <p>Giriş yapmak için eposta ve şifrenizi girin</p>
+                                <div class="form-group">
+                                    <label class="col-form-label">Email Adres</label>
+                                    <input asp-for="Email" class="form-control" type="email"  placeholder="Test@gmail.com">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Şifre</label>
+                                    <div class="form-input position-relative">
+                                        <input class="form-control" type="password"   placeholder="*********" asp-for="Password">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="checkbox p-0">
+                                        <input id="checkbox1" type="checkbox">
+                                        <label class="text-muted" for="checkbox1">Beni Hatırla</label>
+                                    </div><a class="link" href="forget-password.html">Şifremi Unuttum</a>
+                                    <div class="text-end mt-3">
+                                        <button class="btn btn-primary btn-block w-100" type="submit">Giriş Yap</button>
+                                    </div>
+                                </div>
+                                <p class="mt-4 mb-0 text-center">Hesabın yok mu ?<a class="ms-2" asp-area="" asp-controller="Auth" asp-action="Register">Hesap Oluştur</a></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="~/Admin/theme/assets/js/jquery.min.js"></script>
+        <script src="~/Admin/theme/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="~/Admin/theme/assets/js/icons/feather-icon/feather.min.js"></script>
+        <script src="~/Admin/theme/assets/js/icons/feather-icon/feather-icon.js"></script>
+        <script src="~/Admin/theme/assets/js/config.js"></script>
+        <script src="~/Admin/theme/assets/js/script.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await Component.InvokeAsync("Notyf")
+    </div>
+
+</body>
+</html>

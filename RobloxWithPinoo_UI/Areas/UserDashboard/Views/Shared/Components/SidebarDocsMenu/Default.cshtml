@@ -1,0 +1,18 @@
+﻿@model List<RobloxWithPinoo_UI.Entity.Dtos.DocCategoryDtos.ListDocCategories>
+
+<li class="sidebar-list">
+    <i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="javascript:void(0)">
+        <svg class="stroke-icon">
+            <use href="~/Admin/theme/assets/svg/icon-sprite.svg#stroke-home"></use>
+        </svg>
+        <svg class="fill-icon">
+            <use href="~/Admin/theme/assets/svg/icon-sprite.svg#fill-home"></use>
+        </svg><span class="">Öğretici          </span>
+    </a>
+    <ul class="sidebar-submenu">
+        @foreach (var item in Model)
+        {
+            <li><a data-id="@item.Id" asp-area="UserDashboard" asp-controller="DocArticle" asp-action="Index" asp-route-categoryId="@item.Id">@item.Name</a></li>
+        }
+    </ul>
+</li>

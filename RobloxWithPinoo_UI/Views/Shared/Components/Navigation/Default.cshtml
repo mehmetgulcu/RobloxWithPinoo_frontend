@@ -1,0 +1,33 @@
+﻿<header class="navigation bg-tertiary">
+    <nav class="navbar navbar-expand-xl navbar-light text-center py-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <img loading="prelaod" decoding="async" class="img-fluid" width="160" src="~/Landing/theme/images/PinooLogo.png" alt="pinoo logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="https://www.pinoo.io/pages/hakkimizda" target="_blank">Pinoo Hakkında</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="https://www.pinoo.io/collections/urunler" target="_blank">Mağaza</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Faq">Sıkça Sorulan Sorular</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Index">İletişim</a>
+                    </li>
+                </ul>
+                <!-- account btn --> <a asp-area="" asp-controller="Auth" asp-action="Login" class="btn btn-outline-primary">Giriş Yap</a>
+                <!-- account btn --> <a asp-area="" asp-controller="Auth" asp-action="Register" class="btn btn-primary ms-2 ms-lg-3">Kayıt Ol</a>
+            </div>
+        </div>
+    </nav>
+</header>

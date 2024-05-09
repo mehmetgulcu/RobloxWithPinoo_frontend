@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Areas/UserDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<RobloxWithPinoo_UI.Entity.Dtos.DocArticleDtos.DocArticles>
+
+@if (Model.Any())
+{
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="blog-box blog-grid text-center product-box">
+                            <div class="product-img">
+                                <img class="img-fluid top-radius-blog" src="@item.ImageUrl" alt="docs-img">
+                                <div class="product-hover">
+                                    <ul>
+                                        <li>
+                                            <a data-id="@item.Id" asp-area="UserDashboard" asp-controller="DocArticle" asp-action="Detail" asp-route-articleId="@item.Id">
+                                                <i class="icon-control-play"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="blog-details-main">
+                                <br />
+                                <h5 class="f-w-600">@item.Title</h5>
+                                <p class="blog-bottom-details">@Html.Raw(item.Content.Length > 250 ? item.Content.Substring(0, 250) : item.Content)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+}

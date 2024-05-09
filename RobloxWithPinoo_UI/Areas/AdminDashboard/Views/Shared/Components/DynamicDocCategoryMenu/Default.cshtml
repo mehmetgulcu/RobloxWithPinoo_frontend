@@ -1,0 +1,12 @@
+﻿@model List<RobloxWithPinoo_UI.Entity.Dtos.DocCategoryDtos.ListDocCategories>
+
+<li>
+    <a class="submenu-title" href="javascript:void(0)">Tüm Dokümanlar<span class="sub-arrow"><i class="fa fa-angle-right"></i></span><div class="according-menu"><i class="fa fa-angle-right"></i></div></a>
+    <ul class="nav-sub-childmenu submenu-content" style="display: none;">
+        <li><a asp-area="AdminDashboard" asp-controller="DocArticle" asp-action="Index" >Tüm Makaleler</a></li>
+        @foreach (var item in Model)
+        {
+            <li><a data-id="@item.Id" asp-area="AdminDashboard" asp-controller="DocArticle" asp-action="DocArticleByCategory" asp-route-categoryId="@item.Id">@item.Name</a></li>
+        }
+    </ul>
+</li>

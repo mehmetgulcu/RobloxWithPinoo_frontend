@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model RobloxWithPinoo_UI.Entity.Dtos.ActivationCodeDtos.GenerateActivationCode
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Aktivasyon Kodu Üret</h4>
+                </div>
+                <div class="card-body add-post">
+                    <form class="row needs-validation" asp-area="AdminDashboard" asp-controller="ActivationCode" asp-action="GenerateActivationCode" method="post" enctype="multipart/form-data">
+                        <div class="col-sm-12">
+                            <div class="mb-3">
+                                <label for="validationCustom01">Üretilecek Kod Adetini Girin:</label>
+                                <input class="form-control" id="validationCustom01" asp-for="Amount" type="number" placeholder="Üretilecek kod adeti girin" >
+                                <span asp-validation-for="Amount" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="btn-showcase text-end">
+                            <button class="btn btn-primary" type="submit">Kaydet</button>
+                            <input class="btn btn-light" type="reset" value="Vazgeç">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

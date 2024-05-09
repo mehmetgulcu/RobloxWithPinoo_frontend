@@ -1,0 +1,89 @@
+﻿@model List<RobloxWithPinoo_UI.Entity.Dtos.AdminDashboardDtos.MonthlyRegisterChart>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    .chart-container {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+</style>
+
+<div class="xl-50 col-xl-7 col-lg-12">
+    <div class="small-chart-widget chart-widgets-small">
+        <div class="card">
+            <div class="card-header">
+                <h4>Aylık Kullanıcı Kayıt Grafiği</h4>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div>
+                                <canvas id="monthlyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        var chartData = @Html.Raw(ViewBag.ChartData);
+
+        var labels = chartData.map(item => item.Month + " " + item.Date);
+        var values = chartData.map(item => item.Count);
+        var monthLabels = chartData.map(item => item.Month);
+
+        var ctx = document.getElementById('monthlyChart').getContext('2d');
+
+        var myLineChartWeekly = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    label: 'Aylık',
+                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            min: 0,
+                            max: 20,
+                            stepSize: 2
+                        }
+                    }]
+                }
+            }
+        });
+    });
+</script>

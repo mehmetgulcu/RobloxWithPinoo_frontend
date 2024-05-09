@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model RobloxWithPinoo_UI.Entity.Dtos.DocCategoryDtos.CreateDocCategory
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Kategori Oluştur</h4>
+                </div>
+                <div class="card-body add-post">
+                    <form class="row needs-validation" asp-area="AdminDashboard" asp-controller="DocCategory" asp-action="CreateDocCategory" method="post" enctype="multipart/form-data">
+                        <div class="col-sm-12">
+                            <div class="mb-3">
+                                <label for="validationCustom01">Kategori Adı:</label>
+                                <input class="form-control" id="validationCustom01" asp-for="Name" type="text" placeholder="Kategori Adı" >
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="btn-showcase text-end">
+                            <button class="btn btn-primary" type="submit">Kaydet</button>
+                            <input class="btn btn-light" type="reset" value="Vazgeç">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

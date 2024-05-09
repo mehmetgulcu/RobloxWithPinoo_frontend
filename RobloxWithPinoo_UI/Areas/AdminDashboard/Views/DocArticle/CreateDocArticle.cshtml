@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model RobloxWithPinoo_UI.Entity.Dtos.DocArticleDtos.CreateDocArticle
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Doküman Oluştur</h4>
+                </div>
+                <div class="card-body add-post">
+                    <form class="row needs-validation" asp-area="AdminDashboard" asp-controller="DocArticle" asp-action="CreateDocArticle" method="post" enctype="multipart/form-data">
+                        <div class="col-sm-12">
+                            <div class="mb-3">
+                                <label for="validationCustom01">Makale Başlığı:</label>
+                                <input class="form-control" id="validationCustom01" asp-for="Title" type="text" placeholder="Başlık" >
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <div class="col-md-12 position-relative">
+                                    <label class="form-label" for="validationTooltip01">Kategori:</label>
+                                    <select id="categoryList" class="form-control" asp-for="DocCategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))"></select>
+                                    <span asp-validation-for="DocCategoryId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="email-wrapper">
+                                <div class="theme-form">
+                                    <div class="mb-3">
+                                        <label>İçerik:</label>
+                                        <textarea id="text-box" cols="10" rows="2" asp-for="Content"></textarea>
+                                        <span asp-validation-for="Content" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="validationCustom01">Görsel Url:</label>
+                            <input class="form-control" id="validationCustom01" asp-for="ImageUrl" type="text" placeholder="Görsel Url" >
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        </div>
+                        <div class="btn-showcase text-end">
+                            <button class="btn btn-primary" type="submit">Kaydet</button>
+                            <input class="btn btn-light" type="reset" value="Vazgeç">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+﻿@{
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<RobloxWithPinoo_UI.Entity.Dtos.DocArticleDtos.ListDocArticles>
+
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <h4>Tüm Eğitim Dokümanları</h4>
+        </div>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive theme-scrollbar">
+                    <table class="display" id="basic-1">
+                        <thead>
+                            <tr>
+                                <th data-column-id="konu">Konu</th>
+                                <th data-column-id="kategori">Kategori</th>
+                                <th data-column-id="tarih">Oluşturulma Tarihi</th>
+                                <th data-column-id="islem" data-sortable="false">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr data-item-id="@item.Id">
+                                    <td>@item.Title</td>
+                                    <td>@item.DocCategoryName</td>
+                                    <td>@item.CreatedDate</td>
+                                    <td>
+                                        <ul class="action">
+                                            <li class="edit"><a data-id="@item.Id" asp-area="AdminDashboard" asp-controller="DocArticle" asp-action="UpdateDocArticle" asp-route-articleId="@item.Id"><i class="icon-pencil-alt"></i></a></li>
+                                            <li class="delete"><a data-id="@item.Id" asp-area="AdminDashboard" asp-controller="DocArticle" asp-action="DeleteDocArticle" asp-route-articleId="@item.Id"><i class="icon-trash"></i></a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".card-body").on("sortablestop", ".table-responsive", function (event, ui) {
+                var sortedIds = $(this).find('tbody tr').map(function () {
+                    return $(this).data("item-id");
+                }).get();
+
+                var token = '@ViewBag.TOKEN';
+
+                $.ajax({
+                    url: "@ViewBag.BASEURL/api/DocArticle/UpdateIndexes",
+                    type: "POST",
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    },
+                    contentType: "application/json",
+                    data: JSON.stringify(sortedIds),
+                    success: function (response) {
+                        console.log("Sıralama güncellendi: " + response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Hata oluştu: " + error);
+                    }
+                });
+            });
+
+            $("#basic-1 tbody").sortable({
+                helper: fixHelperModified,
+                stop: function (event, ui) {
+                    $('td:first-child', ui.item.parent()).each(function (i) {
+                        $(this).html(i + 1);
+                    });
+
+                    $(this).closest(".table-responsive").trigger("sortablestop", [ui]);
+                }
+            }).disableSelection();
+
+            function fixHelperModified(e, tr) {
+                var $originals = tr.children();
+                var $helper = tr.clone();
+                $helper.children().each(function (index) {
+                    $(this).width($originals.eq(index).width())
+                });
+                return $helper;
+            }
+        });
+    </script>
+}

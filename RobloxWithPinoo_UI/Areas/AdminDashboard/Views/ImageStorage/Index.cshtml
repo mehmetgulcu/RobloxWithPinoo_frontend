@@ -1,0 +1,90 @@
+﻿@{
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model List<string>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Hızlı Görsel Yükle</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-area="AdminDashboard" asp-controller="ImageStorage" asp-action="Upload" method="post" enctype="multipart/form-data">
+                        <div class="dropzone bg-light-primary" id="singleFileUpload">
+                            <div class="m-0 dz-message needsclick">
+                                <i class="icon-cloud-up"></i>
+                                <h6 class="f-w-600 mb-0">Görseli buraya bırakın veya yüklemek için tıklayın.</h6>
+                                <input type="file" id="file" name="file" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-primary" type="submit">Görseli yükle</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Görsel Galerisi</h4>
+                </div>
+                <div class="gallery my-gallery card-body row" itemscope="">
+                    @foreach (var imageUrl in Model)
+                    {
+                        <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
+                            <a href="@imageUrl" itemprop="contentUrl" data-size="1600x950">
+                                <img class="img-thumbnail" src="@imageUrl" itemprop="thumbnail" alt="Resim">
+                            </a>
+                            <figcaption itemprop="caption description">Image caption</figcaption>
+                        </figure>
+                    }
+                </div>
+                <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="pswp__bg"></div>
+                    <div class="pswp__scroll-wrap">
+                        <div class="pswp__container">
+                            <div class="pswp__item"></div>
+                            <div class="pswp__item"></div>
+                            <div class="pswp__item"></div>
+                        </div>
+                        <div class="pswp__ui pswp__ui--hidden">
+                            <div class="pswp__top-bar">
+                                <div class="pswp__counter"></div>
+                                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                                <button class="pswp__button pswp__button--share" title="Share"></button>
+                                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                                <div class="pswp__preloader">
+                                    <div class="pswp__preloader__icn">
+                                        <div class="pswp__preloader__cut">
+                                            <div class="pswp__preloader__donut"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                <div class="pswp__share-tooltip"></div>
+                            </div>
+                            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                            <div class="pswp__caption">
+                                <div class="pswp__caption__center"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

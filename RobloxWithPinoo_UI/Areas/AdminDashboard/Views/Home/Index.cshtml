@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @await Component.InvokeAsync("GetTotalArticleCount")
+        @await Component.InvokeAsync("GetTotalCategoriesCount")
+    </div>
+</div>
+
+@await Component.InvokeAsync("NumberOfArticlesPerCategory")
+
+<div class="container-fluid">
+    <div class="row">
+        @await Component.InvokeAsync("GetTotalActiveCardsCount")
+        @await Component.InvokeAsync("GetTotalUsersCount")
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        @await Component.InvokeAsync("GetDailyRegisterChart")
+        @await Component.InvokeAsync("GetWeeklyRegisterChart")
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        @await Component.InvokeAsync("GetMonthlyRegisterChart")
+        @await Component.InvokeAsync("GetYearlyRegisterChart")
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        @await Component.InvokeAsync("GetGeneratedActivationCodesCount")
+        @await Component.InvokeAsync("GetTotalActivatedCodesCount")
+        @await Component.InvokeAsync("GetTotalNotActivatedCodesCount")
+    </div>
+</div>

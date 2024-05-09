@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<RobloxWithPinoo_UI.Entity.Dtos.UserDtos.ListUserDto>
+
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <h4>Tüm Kullanıcılar</h4>
+        </div>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive theme-scrollbar">
+                    <table class="display" id="basic-1">
+                        <thead>
+                            <tr>
+                                <th>Kullanıcı Adı</th>
+                                <th>Kullanıcı Soyadı</th>
+                                <th>Kullanıcı Mail</th>
+                                <th>Kullanıcı Kayıt Tarihi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.FirstName</td>
+                                    <td>@item.LastName</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.DateOfRegistration</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+**/*.o
+**/*.a
+lua-*/**/*.wasm
+.vscode/
+website/

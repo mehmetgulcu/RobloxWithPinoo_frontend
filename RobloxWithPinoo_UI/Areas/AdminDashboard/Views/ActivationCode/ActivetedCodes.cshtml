@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<RobloxWithPinoo_UI.Entity.Dtos.ActivationCodeDtos.ActivationCodeListDto>
+
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <h4>Aktifleşen Kodlar Tablosu</h4>
+        </div>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive theme-scrollbar">
+                    <table class="display" id="basic-1">
+                        <thead>
+                            <tr>
+                                <th>Kullanıcı Adı</th>
+                                <th>Kullanıcı Soyadı</th>
+                                <th>Kod</th>
+                                <th>Aktifleşme Tarihi</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ActivetedUserName</td>
+                                    <td>@item.ActivetedUserLastName</td>
+                                    <td>@item.Code</td>
+                                    <td>@item.ActivatedDate</td>
+                                    <td>
+                                        @if(item.IsActive == true)
+                                        {
+                                            <span class="badge bg-success text-white rounded-pill p-2">Aktif Kullanıcı </span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
